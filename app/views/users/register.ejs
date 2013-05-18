@@ -1,0 +1,19 @@
+<div class="page-header">
+    <h2>Rekisteröidy</h2>
+</div>
+
+<div class="container">
+  <%- formTagBegin({ action: path_to.register }) %>
+
+  <%- labelTag('Sähköposti', { name: 'email'}) %>
+  <%- inputTag({name:'email', type: 'text'}) %>
+  
+  <%- labelTag('Salasana', { name: 'password'}) %>
+  <%- inputTag({name:'password', type: 'password'}) %>
+  
+  <%- labelTag('Salasana uudestaan', { name: 'repassword'}) %>
+  <%- inputTag({name:'repassword', type: 'password'}) %>
+  
+  <p><%- submitTag('Rekisteröidy') %></p>
+  <%- formTagEnd() %>
+</div>

@@ -1,0 +1,24 @@
+<div class="page-header">
+    <h2><%= poem.title %></h2>
+    <%= poem.created.toDateString() %>&nbsp;<%= poem.created.getHours() %>:<%= poem.created.getMinutes() %><br>
+    <% if (!poem.published) { %>
+    <i>Ei julkaistu</i>
+    <% } else { %>
+    <i>Julkaistu</i>
+    <% } %>
+</div>
+
+<div class="well">
+  <%= poem.content %>
+</div>
+
+<div class="well">
+<% if (user_current != null && user_current.id == poem.userId) { %>
+    <%- link_to('<i class="icon-edit icon-white"></i> Muokkaa', pathTo.edit_poem(poem), {class: 'btn btn-primary'}) %>
+    <%- link_to('<i class="icon-remove icon-white"></i> Poista', pathTo.poem(poem), {class: 'btn btn-danger', method: 'delete', remote: true, jsonp: '(function (u) { location.href = u; })'}) %>
+    tai
+    <%- link_to('Pääsivulle', pathTo.root()) %>
+<% } else { %>
+	<%- link_to('Pääsivulle', pathTo.root()) %>
+<% } %>
+</div>

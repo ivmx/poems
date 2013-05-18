@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <%- stylesheetLinkTag('bootstrap_readable', 'application', 'bootstrap-responsive') %>
+        <%- javascriptIncludeTag('http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', 'bootstrap', 'rails', 'application') %>
+        <%- csrfMetaTag() %>
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+
+                    <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+             
+                    <!-- Be sure to leave the brand out there if you want it shown -->
+                    <a class="brand" href="<%= pathTo.root() %>"><img src="/images/runokirja.jpg" width="48">&nbsp;Runokirja</a>
+                 
+                    <!-- Everything you want hidden at 940px or less, place within here -->
+                    <div class="nav-collapse collapse">
+                        <% if (user_current != null) { %>
+                        <ul class="nav">
+                            <li><a href="<%= pathTo.user(user_current) %>"><%= user_current.email %></a></li>
+                            <li><a href="<%= pathTo.mypoems() %>">Omat runot</a></li>
+                            <li><a href="<%= pathTo.logout() %>">Kirjaudu ulos</a></li>
+                        </ul>
+                        <% } else { %>
+                        <ul class="nav">
+                            <li><a href="<%= pathTo.login() %>">Kirjaudu</a></li>
+                        </ul>
+                        <% } %>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <% var flash = request.flash('info').pop(); if (flash) { %>
+                <div class="alert alert-info">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <%- flash %>
+                </div>
+            <% } %>
+
+            <% flash = request.flash('error').pop(); if (flash) { %>
+                <div class="alert alert-error">
+                    <a class="close" data-dismiss="alert">×</a>
+                    <%- flash %>
+                </div>
+            <% }; %>
+
+            <%- body %>
+
+            <hr />
+            <footer>
+                <p>&copy; FreeRider Software 2013</p>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<div class="page-header">
+    <h2>Kirjaudu</h2>
+</div>
+
+<div class="container">
+  <%- formTagBegin({ action: path_to.login }) %>
+
+  <%- labelTag('Sähköposti', { name: 'email'}) %>
+  <%- inputTag({name:'email', type: 'text'}) %>
+  
+  <%- labelTag('Salasana', { name: 'password'}) %>
+  <%- inputTag({name:'password', type: 'password'}) %>
+  
+  <p><%- submitTag('Kirjaudu') %></p>
+  <%- formTagEnd() %>
+  <p>
+  Ei vielä tunnusta? <a href="<%= pathTo.register() %>">Rekisteröidy</a>
+  </p>
+</div>

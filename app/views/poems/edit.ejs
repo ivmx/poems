@@ -1,0 +1,12 @@
+<div class="page-header">
+    <h2>Muokkaa</h2>
+</div>
+
+<% var form = formFor(poem, {action: pathTo.poem(poem), method: 'PUT', id: "poem-form", class: 'form-horizontal'}) %>
+<%- form.begin() %>
+<%- include _form %>
+<div class="form-actions">
+    <%- form.submit('<i class="icon-ok icon-white"></i> Tallenna', {class: 'btn btn-primary'}) %> tai
+    <%- linkTo('Peruuta', pathTo.poem(poem), {class: 'btn'}) %>
+</div>
+<%- form.end() %>

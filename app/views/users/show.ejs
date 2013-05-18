@@ -1,0 +1,21 @@
+<div class="page-header">
+	<% if (user.name) { %>
+		<h2><%= user.name %></h2>
+	<% } else { %>
+		<h2><%= user.email %></h2>
+	<% } %>
+</div>
+
+<table class="table table-bordered">
+    <tbody>
+		<tr><th>Nimi</th><td><%= user.name %></td></tr>
+        <tr><th>Sähköposti</th><td><%= user.email %></td></tr>
+    </tbody>
+</table>
+
+<div class="well">
+    <%- link_to('<i class="icon-edit icon-white"></i> Muokkaa', pathTo.edit_user(user), {class: 'btn btn-primary'}) %>
+    <%- link_to('<i class="icon-remove icon-white"></i> Poista', pathTo.user(user), {class: 'btn btn-danger', method: 'delete', remote: true, jsonp: '(function (u) { location.href = u; })'}) %>
+    or
+    <%- link_to('Pääsivulle', pathTo.root()) %>
+</div>

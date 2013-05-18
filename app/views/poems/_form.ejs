@@ -1,0 +1,24 @@
+<%- errorMessagesFor(poem) %>
+<div class="control-group">
+   <%- form.label("otsikko", false, {class: "control-label"}) %>
+   <div class="controls">
+       <%- form.input("title") %>
+   </div>
+</div>
+<div class="control-group">
+   <%- form.label("sisältö", false, {class: "control-label"}) %>
+   <div class="controls">
+       <%- form.textarea("content") %>
+   </div>
+</div>
+<div class="control-group">
+
+   <%- form.label("julkaistu", false, {class: "control-label"}) %>
+
+   <div class="controls">
+
+       <%- form.checkbox("published") %>
+
+   </div>
+
+</div>

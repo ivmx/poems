@@ -1,0 +1,36 @@
+<div class="page-header">
+    <h2>Uusimmat runot</h2>
+</div>
+
+<div class="row">
+    <div class="span12">
+        <% if (results.length > 0) { %>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Otsikko</th>
+                    <th>Kirjoittaja</th>
+                    <th>Julkaistu</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(function (result) { %>
+                <tr>
+                    <td><strong><%- link_to(result.poem.title, pathTo.poem(result.poem)) %></strong></td>
+                    <% if (result.author.name) { %>
+						<td><%= result.author.name %></td>
+                    <% } else { %>
+						<td><%= result.author.email %></td>
+					<% } %>
+                    <td><%= result.poem.created.toString() %></td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+        <p class="alert alert-block alert-info">
+            <strong>Ei runoja.</strong>
+        </p>
+        <% } %>
+    </div>
+</div>

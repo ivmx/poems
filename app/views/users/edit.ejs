@@ -1,0 +1,12 @@
+<div class="page-header">
+    <h2>Muokkaa käyttäjätietoja</h2>
+</div>
+
+<% var form = formFor(user, {action: pathTo.user(user), method: 'PUT', id: "user-form", class: 'form-horizontal'}) %>
+<%- form.begin() %>
+<%- include _form %>
+<div class="form-actions">
+    <%- form.submit('<i class="icon-ok icon-white"></i> Päivitä', {class: 'btn btn-primary'}) %> tai
+    <%- linkTo('Peruuta', pathTo.user(user), {class: 'btn'}) %>
+</div>
+<%- form.end() %>

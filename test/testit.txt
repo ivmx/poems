@@ -1,0 +1,12 @@
+# Luo uuden runon
+curl -X POST -d @createpoem.json http://runokirja.org/poems.json --header "Content-Type:application/json"
+
+# Hakee 10 uusinta runoa tekijöineen
+curl -X GET http://runokirja.org/poems.json
+
+#Päivittää runon annetuilla arvoilla
+curl -X PUT -d @updatepoem.json http://runokirja.org/poems/<runon ID>.json --header "Content-Type:application/json"
+
+#Poistaa runon
+curl -X DELETE http://runokirja.org/poems/<runon ID>.json
+
